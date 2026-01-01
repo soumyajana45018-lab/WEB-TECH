@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Conditions & Loops</title>
+</head>
+
+<body>
+
+<h2>JavaScript Conditional & Loop Demo</h2>
+
+<button onclick="runCode()">Run Program</button>
+
+<pre id="output"></pre>
+
+<script>
+function runCode(){
+
+    let result = "";
+    let num = 10;
+    result += "Number = " + num + "\n";
+
+    if(num > 0){
+        result += "It is Positive\n";
+    } else if(num < 0){
+        result += "It is Negative\n";
+    } else {
+        result += "It is Zero\n";
+    }
+    let day = 2;
+    switch(day){
+        case 1: result += "Day = Monday\n"; break;
+        case 2: result += "Day = Tuesday\n"; break;
+        default: result += "Other Day\n";
+    }
+    result += "\nFor Loop (1 to 5):\n";
+    for(let i=1; i<=5; i++){
+        result += i + " ";
+    }
+    result += "\n\nWhile Loop (1 to 5):\n";
+    let a = 1;
+    while(a <= 5){
+        result += a + " ";
+        a++;
+    }
+    result += "\n\nDo-While Loop (1 to 5):\n";
+    let b = 1;
+    do{
+        result += b + " ";
+        b++;
+    }while(b <= 5);
+
+    document.getElementById("output").textContent = result;
+}
+</script>
+
+</body>
+</html>
