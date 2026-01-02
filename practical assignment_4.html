@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Modern JS Shop</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+    margin:0;
+}
+header{
+    background:#222;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+.products{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:15px;
+    padding:20px;
+}
+.card{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+.card img{
+    width:100%;
+    height:160px;
+    object-fit:contain;
+}
+button{
+    background:#28a745;
+    color:white;
+    border:none;
+    padding:8px;
+    width:100%;
+    cursor:pointer;
+    border-radius:5px;
+}
+.cart{
+    background:white;
+    padding:15px;
+    margin:20px;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🛒 Modern JavaScript Shop</h1>
+    <p>Dynamic products using API & ES6</p>
+</header>
+
+<section class="products" id="productList"></section>
+
+<section class="cart">
+    <h2>Cart</h2>
+    <ul id="cartItems"></ul>
+    <h3>Total: ₹<span id="total">0</span></h3>
+</section>
+
+<script>
+const productList = document.getElementById("productList");
+const cartItems = document.getElementById("cartItems");
+const totalDisplay = document.getElementById("total");
+
+let cart = [];
+let total = 0;
+
+const fetchProducts = async () => {
+    const response = await fetch("https://fakestoreapi.com/products");
+    const products = await response.json();
+    displayProducts(products);
+};
+
+const displayProducts = (products) => {
+    productList.innerHTML = "";
+
+    products.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+            <img src="${product.image}">
+            <h4>${product.title.slice(0,40)}...</h4>
+            <p>₹${Math.round(product.price * 80)}</p>
+            <button>Add to Cart</button>
+        `;
+
+        card.querySelector("button").addEventListener("click", () => {
+            addToCart(product);
+        });
+
+        productList.appendChild(card);
+    });
+};
+
+const addToCart = (product) => {
+    const price = Math.round(product.price * 80);
+
+    cart.push({ 
+        name: product.title, 
+        price 
+    });
+
+    updateCart();
+};
+
+const updateCart = () => {
+    cartItems.innerHTML = "";
+    total = 0;
+
+    cart.forEach(item => {
+        total += item.price;
+        const li = document.createElement("li");
+        li.textContent = `${item.name.slice(0,30)}... - ₹${item.price}`;
+        cartItems.appendChild(li);
+    });
+
+    totalDisplay.textContent = total;
+};
+
+fetchProducts();
+</script>
+
+</body>
+</html>
