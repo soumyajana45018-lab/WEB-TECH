@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Responsive Web Page</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    margin:0;
+}
+
+header{
+    background:#0066ff;
+    color:white;
+    text-align:center;
+    padding:1.5rem;
+}
+
+nav{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:1rem;
+}
+
+nav a{
+    color:white;
+    margin:0 10px;
+    text-decoration:none;
+}
+
+.container{
+    display:flex;
+    flex-direction:column;
+    padding:1rem;
+}
+
+.box{
+    background:#f2f2f2;
+    padding:1rem;
+    margin:0.7rem 0;
+    font-size:1rem;
+}
+
+@media (min-width:600px){
+    .container{
+        flex-direction:row;
+        gap:1rem;
+    }
+
+    .box{
+        width:48%;
+    }
+}
+
+@media (min-width:900px){
+
+    header{
+        font-size:2rem;
+    }
+
+    .container{
+        width:80%;
+        margin:auto;
+    }
+
+    .box{
+        width:30%;
+        font-size:1.1rem;
+    }
+}
+
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:1rem;
+    margin-top:1rem;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Responsive Web Design</h1>
+    <p>Mobile First • Flexible Units • Media Queries</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+</nav>
+
+<section class="container">
+    <div class="box">This is a responsive box. On mobile it is full width.</div>
+    <div class="box">On tablets, two boxes per row.</div>
+    <div class="box">On desktops, three boxes per row.</div>
+</section>
+
+<footer>
+    © 2025 Responsive Website Demo
+</footer>
+
+</body>
+</html>

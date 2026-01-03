@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM Manipulation Demo</title>
+</head>
+
+<body>
+
+<h2>DOM Manipulation using JavaScript</h2>
+
+<p id="text1">This text will change using getElementById()</p>
+
+<p class="para">This text will change using querySelector()</p>
+
+<div id="box" style="border:2px solid blue; padding:10px; width:250px;">
+    Original Content
+</div>
+
+<br>
+
+<button onclick="changeById()">Use getElementById()</button>
+<button onclick="changeByQuery()">Use querySelector()</button>
+<button onclick="changeInnerHTML()">Use innerHTML</button>
+
+<script>
+
+function changeById(){
+    document.getElementById("text1").style.color = "red";
+    document.getElementById("text1").innerHTML = "Changed using getElementById()";
+}
+
+function changeByQuery(){
+    document.querySelector(".para").style.color = "green";
+    document.querySelector(".para").innerHTML = "Changed using querySelector()";
+}
+
+function changeInnerHTML(){
+    document.getElementById("box").innerHTML = "<b>Updated Content using innerHTML</b>";
+}
+
+</script>
+
+</body>
+</html>
